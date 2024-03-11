@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Piloto</title>
+</head>
+<body>
+    <h1>Agregar Piloto</h1>
+    
+    <form method="post" action="{% url 'agregar_piloto' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Piloto</button>
+    </form>
+
+    <a href="{% url 'index' %}">Volver a la Lista</a>
+</body>
+</html>

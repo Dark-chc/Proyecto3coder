@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formula 1 Data</title>
+</head>
+<body>
+    <h1>Lista de Pilotos, Circuitos y Carreras</h1>
+    
+    <h2>Pilotos</h2>
+    <ul>
+        {% for piloto in pilotos %}
+            <li>{{ piloto.nombre }} - {{ piloto.equipo }} - Puntos: {{ piloto.puntos }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Circuitos</h2>
+    <ul>
+        {% for circuito in circuitos %}
+            <li>{{ circuito.nombre }} - {{ circuito.pais }} - Longitud: {{ circuito.longitud }} km</li>
+        {% endfor %}
+    </ul>
+    
+    <h2>Carreras</h2>
+    <ul>
+        {% for carrera in carreras %}
+            <li>{{ carrera.nombre }} - {{ carrera.fecha }} - Circuito: {{ carrera.circuito.nombre }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'agregar_piloto' %}">Agregar Piloto</a>
+    <a href="{% url 'buscar_bd' %}">Buscar en la Base de Datos</a>
+</body>
+</html>

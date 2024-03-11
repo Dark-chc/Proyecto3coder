@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar en la Base de Datos</title>
+</head>
+<body>
+    <h1>Buscar en la Base de Datos</h1>
+    
+    <form method="get" action="{% url 'buscar_bd' %}">
+        <label for="query">Buscar:</label>
+        <input type="text" name="query" id="query">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <h2>Resultados</h2>
+
+    <h3>Pilotos</h3>
+    <ul>
+        {% for piloto in resultados_pilotos %}
+            <li>{{ piloto.nombre }} - {{ piloto.equipo }} - Puntos: {{ piloto.puntos }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Circuitos</h3>
+    <ul>
+        {% for circuito in resultados_circuitos %}
+            <li>{{ circuito.nombre }} - {{ circuito.pais }} - Longitud: {{ circuito.longitud }} km</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Carreras</h3>
+    <ul>
+        {% for carrera in resultados_carreras %}
+            <li>{{ carrera.nombre }} - {{ carrera.fecha }} - Circuito: {{ carrera.circuito.nombre }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'index' %}">Volver a la Lista</a>
+</body>
+</html>
